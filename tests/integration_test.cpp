@@ -67,7 +67,9 @@ void verify_for_documentation(const std::string& source)
 
 TEST_CASE("Integration Test")
 {
+  // begin-snippet: example_from_code
   const std::string s = "if (5 > 1) {2 + 3} else {4 - 6}";
+  // end-snippet
   verify_eml(s);
   verify_for_documentation(s);
 }

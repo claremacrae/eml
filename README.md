@@ -16,3 +16,4 @@ Thanks to Sy Brand for their [tl::expected](https://github.com/TartanLlama/expec
 ## Examples
 
 snippet: integration_test.Integration_Test.approved.docs.txt
+snippet: example_from_code
