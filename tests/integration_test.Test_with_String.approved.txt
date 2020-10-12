@@ -2,8 +2,8 @@ Input:
 "Hello, " ++ "world"
 
 Compile to:
-0000    01 00          push 0 //4.63815e-310
-   |    01 01          push 1 //4.63815e-310
+0000    01 00          push 0 //4.64134e-310
+   |    01 01          push 1 //4.64134e-310
    |    0c             string_cat
 
 Executes to:
