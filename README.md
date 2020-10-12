@@ -12,3 +12,7 @@ See how to build the project [here](docs/build.md).
 ## Acknowledgements
 
 Thanks to Sy Brand for their [tl::expected](https://github.com/TartanLlama/expected).
+
+## Examples
+
+snippet: integration_test.Integration_Test.approved.docs.txt
