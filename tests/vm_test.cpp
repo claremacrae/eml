@@ -30,6 +30,18 @@ static eml::Bytecode creating_bytecode()
   return code;
 }
 
+static void verify_bytecode_execution(const eml::Bytecode& bytecode)
+{
+  eml::GarbageCollector gc{};
+  eml::VM machine{gc};
+  const auto result = machine.interpret(bytecode);
+  REQUIRE(result);
+
+  std::stringstream ss;
+  ss << "bytecode:\n" << bytecode << "\nExecutes to:\n" << *result;
+  ApprovalTests::Approvals::verify(ss.str());
+}
+
 TEST_CASE("Arithmatic instructions", "[eml.vm]")
 {
   using eml::Bytecode;
@@ -79,26 +91,9 @@ TEST_CASE("Jumps", "[eml.vm]")
   using eml::line_num;
   using eml::Value;
 
-  SECTION("Bytecode")
+  SECTION("(if (> 5 1) (+ 2 3) (- 4 6))")
   {
-    const auto code = creating_bytecode();
-    ApprovalTests::Approvals::verify(code);
-  }
-
-  GIVEN("(if (> 5 1) (+ 2 3) (- 4 6))")
-  {
-    const auto code = creating_bytecode();
-
-    eml::GarbageCollector gc{};
-    eml::VM machine{gc};
-
-    THEN("Evaluate to 5")
-    {
-      const double expected = 5;
-      const auto result = machine.interpret(code);
-      REQUIRE(result);
-      REQUIRE(result->unsafe_as_number() == Approx(expected));
-    }
+    verify_bytecode_execution(creating_bytecode());
   }
 
   GIVEN("(if (> 5 1) (+ 2 3) (- 4 6)) 2")
