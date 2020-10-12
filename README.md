@@ -15,5 +15,22 @@ Thanks to Sy Brand for their [tl::expected](https://github.com/TartanLlama/expec
 
 ## Examples
 
-snippet: integration_test.Integration_Test.approved.docs.txt
-snippet: example_from_code
+<!-- snippet: integration_test.Integration_Test.approved.docs.txt -->
+<a id='snippet-integration_test.Integration_Test.approved.docs.txt'></a>
+```txt
+Input:
+if (5 > 1) {2 + 3} else {4 - 6}
+
+Executes to:
+5: Number
+
+```
+<sup><a href='/tests/integration_test.Integration_Test.approved.docs.txt#L1-L6' title='Snippet source file'>snippet source</a> | <a href='#snippet-integration_test.Integration_Test.approved.docs.txt' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+<!-- snippet: example_from_code -->
+<a id='snippet-example_from_code'></a>
+```cpp
+const std::string s = "if (5 > 1) {2 + 3} else {4 - 6}";
+```
+<sup><a href='/tests/integration_test.cpp#L70-L72' title='Snippet source file'>snippet source</a> | <a href='#snippet-example_from_code' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
