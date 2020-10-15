@@ -101,13 +101,15 @@ endif()
 
 if(EML_BUILD_TESTS)
     # Conan package manager
-    if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
-       message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-       file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake"
-                     "${CMAKE_BINARY_DIR}/conan.cmake")
-    endif()
+#    if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+#       message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+#       file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/master/conan.cmake"
+#                     "${CMAKE_BINARY_DIR}/conan.cmake")
+#    endif()
 
-    include(${CMAKE_BINARY_DIR}/conan.cmake)
+#    include(${CMAKE_BINARY_DIR}/conan.cmake)
+    add_subdirectory(../Catch2-claremacrae ${CMAKE_CURRENT_BINARY_DIR}/catch2_build)
+    add_subdirectory(../../ApprovalTests/ApprovalTests.cpp ${CMAKE_CURRENT_BINARY_DIR}/approvaltests_build)
 
     add_subdirectory(tests)
     enable_testing()

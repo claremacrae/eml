@@ -24,14 +24,14 @@ add_executable(${EML_TEST_TARGET}
         "type_check_test.cpp"
         integration_test.cpp)
 
-conan_cmake_run(REQUIRES
-        catch2/2.13.2
-        approvaltests.cpp/10.3.0
-        BASIC_SETUP CMAKE_TARGETS
-        BUILD missing)
+#conan_cmake_run(REQUIRES
+#        catch2/2.13.2
+#        approvaltests.cpp/10.3.0
+#        BASIC_SETUP CMAKE_TARGETS
+#        BUILD missing)
 
 target_link_libraries(${EML_TEST_TARGET}
-        PRIVATE eml CONAN_PKG::catch2 CONAN_PKG::approvaltests.cpp)
+        PRIVATE eml Catch2::Catch2 ApprovalTests::ApprovalTests)
 
 if (${EML_BUILD_TESTS_COVERAGE})
     include(ProcessorCount)
