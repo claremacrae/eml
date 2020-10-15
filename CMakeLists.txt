@@ -25,8 +25,8 @@ option(EML_DEBUG_VM_TRACE_EXECUTION
     "The VM will disassemble all the instruction when running with this option"
     OFF)
 
-option(EML_BUILD_DOCUMENTS "Builds the documents for EML" OFF)
-option(EML_BUILD_TESTS "Builds the tests for EML" OFF)
+option(EML_BUILD_DOCUMENTS "Builds the documents for EML" ON)
+option(EML_BUILD_TESTS "Builds the tests for EML" ON)
 CMAKE_DEPENDENT_OPTION(EML_BUILD_TESTS_COVERAGE
     "Build the project with code coverage support for tests,
     must compile with a gcc-compatible compiler" OFF
