@@ -79,6 +79,38 @@ TEST_CASE("Test Error")
   verify_eml("if (5 > 1 {2 + 3} else {4 - 6}");
 }
 
+// This demos how to approval multiple inputs in a single test.
+// In practice, you would probably put most of it in a helper function,
+// maybe verify_emls() - or something more meaningful.
+TEST_CASE("Test Errors")
+{
+  // A tip for your main.cpp
+  // -----------------------
+  // Put the approved and received files in a sub-directory called approval_tests/:
+  // You could also put this in your main.cpp - at global scope, so it applies to every test.
+  // Even better, you could pass in the name of the current source file (without file-extension)
+  // and then there would be a separate sub-directory for the approved files from each source file.
+  // See https://github.com/approvals/ApprovalTests.cpp/blob/master/doc/Configuration.md/#using-sub-directories-for-approved-files
+  auto directoryDisposer = ApprovalTests::Approvals::useApprovalsSubdirectory("approval_tests");
+
+  // Create a container of test inputs - to make it easier still to
+  // add new test cases and improve test coverage:
+  std::vector<std::string> inputs = {
+      "if (5 > 1 {2 + 3} else {4 - 6}", // missing )
+      "if (5 > 1) {2 + 3 else {4 - 6}" // missing }
+  };
+
+  for (const auto& input: inputs)
+  {
+    // Using SECTION allows us to have multiple verify() calls in a single test case.
+    // See https://github.com/approvals/ApprovalTests.cpp/blob/master/doc/MultipleOutputFilesPerTest.md#catch2
+    SECTION(input)
+    {
+      verify_eml(input);
+    }
+  }
+}
+
 //TEST_CASE("Test with String")
 //{
 //  const std::string s = R"("Hello, " ++ "world")";
