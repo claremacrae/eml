@@ -79,11 +79,11 @@ TEST_CASE("Test Error")
   verify_eml("if (5 > 1 {2 + 3} else {4 - 6}");
 }
 
-TEST_CASE("Test with String")
-{
-  const std::string s = R"("Hello, " ++ "world")";
-  verify_eml(s);
-}
+//TEST_CASE("Test with String")
+//{
+//  const std::string s = R"("Hello, " ++ "world")";
+//  verify_eml(s);
+//}
 
 TEST_CASE("Test with Arithmetics")
 {
